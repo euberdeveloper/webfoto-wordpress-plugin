@@ -2,8 +2,6 @@
 
 namespace Webfoto;
 
-use Webmozart\PathUtil\Path;
-
 class Shortcode
 {
     private static $attributes = [

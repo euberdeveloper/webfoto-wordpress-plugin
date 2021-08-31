@@ -5,6 +5,12 @@
  */
 
 
+
+
+
+
+
+
 // Define the plugin directory
 define('WEBFOTO_DIR', plugin_dir_path(__FILE__));
 
@@ -12,15 +18,26 @@ define('WEBFOTO_DIR', plugin_dir_path(__FILE__));
 require_once WEBFOTO_DIR . 'src/autoload.php';
 
 use Webfoto\Shortcode;
+use Webfoto\Settings;
+use Webfoto\Injector;
+
+// Add settings page
+
+function webfoto_load_carbon_fields()
+{
+    Settings::bootSettings();
+}
+add_action('after_setup_theme', 'webfoto_load_carbon_fields');
+function webfoto_add_plugin_settings_page()
+{
+    Settings::settingsPage();
+}
+add_action('carbon_fields_register_fields', 'webfoto_add_plugin_settings_page');
 
 // Add script to head
 function webfoto_enqueue_scripts(): void
 {
-    $vue_path = 'https://unpkg.com/vue';
-    wp_enqueue_script('vue', $vue_path);
-
-    $webfoto_path = 'https://api.fotowebcam.it/webcomponent/web-foto.min.js';
-    wp_enqueue_script('web-foto', $webfoto_path);
+    Injector::injectScripts();   
 }
 add_action('wp_enqueue_scripts', 'webfoto_enqueue_scripts');
 
