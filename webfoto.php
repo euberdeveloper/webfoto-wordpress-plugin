@@ -5,7 +5,7 @@
  */
 
 // Load composer packages
-require_once(plugin_dir_path(__FILE__) . '/lib/autoload.php');
+require_once(plugin_dir_path(__FILE__) . '/vendor/autoload.php');
 
 // Include packages
 use Webmozart\PathUtil\Path;
