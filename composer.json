@@ -1,0 +1,21 @@
+{
+    "version": "0.1.0",
+    "name": "euber/webfoto",
+    "autoload": {
+        "psr-4": {
+            "Euber\\Webfoto\\": "src/"
+        }
+    },
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "authors": [
+        {
+            "name": "euberdeveloper",
+            "email": "euberdeveloper@gmail.com"
+        }
+    ],
+    "require": {
+        "webmozart/path-util": "^2.3"
+    }
+}
