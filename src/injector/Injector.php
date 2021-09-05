@@ -1,6 +1,6 @@
 <?php
 
-namespace Webfoto;
+namespace Webfoto\Wordpress;
 
 class Injector
 {

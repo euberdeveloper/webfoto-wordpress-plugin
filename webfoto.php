@@ -11,9 +11,11 @@ define('WEBFOTO_DIR', plugin_dir_path(__FILE__));
 // Add autoloader
 require_once WEBFOTO_DIR . 'src/autoload.php';
 
-use Webfoto\Shortcode;
-use Webfoto\Settings;
-use Webfoto\Injector;
+// Import the modules
+
+use Webfoto\Wordpress\Shortcode;
+use Webfoto\Wordpress\Settings;
+use Webfoto\Wordpress\Injector;
 
 // Add settings page
 

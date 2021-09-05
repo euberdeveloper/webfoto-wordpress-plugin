@@ -1,6 +1,6 @@
 <?php
 
-namespace Webfoto;
+namespace Webfoto\Wordpress;
 
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;

@@ -18,5 +18,9 @@
     "require": {
         "webmozart/path-util": "^2.3",
         "htmlburger/carbon-fields": "^3.3"
+    },
+    "scripts": {
+        "pull-core": "git submodule update --init --recursive",
+        "post-install-cmd": "cd src/core && composer install"
     }
 }
