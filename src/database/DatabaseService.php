@@ -49,7 +49,7 @@ class DatabaseService extends BaseDatabaseService
     public function getLastImageDate($name): ?DateTime
     {
         $rows = $this->wpdb->get_row(
-            "SELECT timestamp FROM {$this->tableName} ORDER BY timestamp DESC WHERE name = {$name}"
+            "SELECT timestamp FROM {$this->tableName} WHERE name = '{$name}' ORDER BY timestamp DESC"
         );
         $data = $rows->timestamp;
 
@@ -60,7 +60,7 @@ class DatabaseService extends BaseDatabaseService
     {
 
         $rows = $this->wpdb->get_row(
-            "SELECT path FROM {$this->tableName} ORDER BY timestamp DESC WHERE name = {$name}"
+            "SELECT path FROM {$this->tableName} WHERE name = '{$name}' ORDER BY timestamp DESC"
         );
         $data = $rows->path;
 
@@ -82,7 +82,7 @@ class DatabaseService extends BaseDatabaseService
     public function getImages(string $name): array
     {
         $rows = $this->wpdb->get_results(
-            "SELECT timestamp FROM {$this->tableName} ORDER BY timestamp ASC WHERE name = {$name}"
+            "SELECT timestamp FROM {$this->tableName} WHERE name = '{$name}' ORDER BY timestamp ASC"
         );
 
        

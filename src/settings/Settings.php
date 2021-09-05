@@ -17,7 +17,7 @@ class Settings
             'name' => $setting['name'],
             'inputPath' => $setting['input_path'],
             'driver' => $setting['driver'],
-            'keepEverySeconds' => $setting['keep_every_seconds']
+            'keepEverySeconds' => intval($setting['keep_every_seconds'])
         ];
     }
 
