@@ -14,26 +14,35 @@ require_once WEBFOTO_DIR . 'src/autoload.php';
 // Import the modules
 
 use Webfoto\Wordpress\Shortcode;
-use Webfoto\Wordpress\Settings;
 use Webfoto\Wordpress\Injector;
+use Webfoto\Wordpress\SettingsService;
+
+use Webfoto\Core\Utils\Logger;
 
 // Add settings page
-
 function webfoto_load_carbon_fields()
 {
-    Settings::bootSettings();
+    SettingsService::bootSettings();
 }
 add_action('after_setup_theme', 'webfoto_load_carbon_fields');
 function webfoto_add_plugin_settings_page()
 {
-    Settings::settingsPage();
+    SettingsService::settingsPage();
 }
 add_action('carbon_fields_register_fields', 'webfoto_add_plugin_settings_page');
+
+function webfoto_get_settings()
+{
+    SettingsService::fillSettings();
+    Logger::$logger->warning('ciao', [SettingsService::$settings->albums]);
+}
+add_action('carbon_fields_fields_registered', 'webfoto_get_settings');
 
 // Add script to head
 function webfoto_enqueue_scripts(): void
 {
     Injector::injectScripts();   
+
 }
 add_action('wp_enqueue_scripts', 'webfoto_enqueue_scripts');
 

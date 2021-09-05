@@ -2,11 +2,13 @@
 
 namespace Webfoto\Wordpress;
 
+use Webfoto\Wordpress\SettingsService;
+
 class Injector
 {
     static function injectScripts(): void
     {
-        $loadOnFooter = carbon_get_theme_option('webfoto_load_scripts_on_footer');
+        $loadOnFooter = SettingsService::$settings->loadScriptsOnFooter;
 
         $vueUri = 'https://unpkg.com/vue';
         wp_enqueue_script('vue', $vueUri, null, false, $loadOnFooter);
