@@ -14,3 +14,6 @@ require_once(WEBFOTO_DIR . 'src/settings/SettingsService.php');
 require_once(WEBFOTO_DIR . 'src/settings/Settings.php');
 require_once(WEBFOTO_DIR . 'src/injector/Injector.php');
 require_once(WEBFOTO_DIR . 'src/shortcode/Shortcode.php');
+
+require_once(WEBFOTO_DIR . 'src/database/DatabaseService.php');
+require_once(WEBFOTO_DIR . 'src/cronjob/Cronjob.php');
