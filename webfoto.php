@@ -16,8 +16,8 @@ require_once WEBFOTO_DIR . 'src/autoload.php';
 use Webfoto\Wordpress\Shortcode;
 use Webfoto\Wordpress\Injector;
 use Webfoto\Wordpress\SettingsService;
+use Webfoto\Wordpress\Cronjob;
 
-use Webfoto\Core\Utils\Logger;
 
 // Add settings page
 function webfoto_load_carbon_fields()
@@ -34,7 +34,6 @@ add_action('carbon_fields_register_fields', 'webfoto_add_plugin_settings_page');
 function webfoto_get_settings()
 {
     SettingsService::fillSettings();
-    Logger::$logger->warning('ciao', [SettingsService::$settings->albums]);
 }
 add_action('carbon_fields_fields_registered', 'webfoto_get_settings');
 
@@ -53,3 +52,10 @@ function webfoto_shortcode($atts = []): string
     return Shortcode::executeShortcode($atts);
 }
 add_shortcode('webfoto', 'webfoto_shortcode');
+
+// Add cronjob hook
+function webfoto_cron_job_handler(): void
+{
+    Cronjob::executeCron();
+}
+add_action('webfoto_cron_job', 'webfoto_cron_job_handler');
