@@ -11,11 +11,21 @@ class Settings
 
     public array $albums;
 
+    private function parseAlbumSetting(array $setting): array
+    {
+        return [
+            'name' => $setting['name'],
+            'inputPath' => $setting['input_path'],
+            'driver' => $setting['driver'],
+            'keepEverySeconds' => $setting['keep_every_seconds']
+        ];
+    }
+
     function __construct()
     {
         $this->loadScriptsOnFooter = carbon_get_theme_option('webfoto_load_scripts_on_footer');
         $this->outputPhotosPath = carbon_get_theme_option('webfoto_output_photos_path');
         $this->outputPhotosUrl = carbon_get_theme_option('webfoto_output_photos_url');
-        $this->albums = carbon_get_theme_option('webfoto_albums');
+        $this->albums = array_map(fn ($settings) => $this->parseAlbumSetting($settings), carbon_get_theme_option('webfoto_albums'));
     }
 }
