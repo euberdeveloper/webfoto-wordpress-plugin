@@ -5,12 +5,6 @@
  */
 
 
-
-
-
-
-
-
 // Define the plugin directory
 define('WEBFOTO_DIR', plugin_dir_path(__FILE__));
 
