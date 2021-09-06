@@ -17,3 +17,4 @@ require_once(WEBFOTO_DIR . 'src/shortcode/Shortcode.php');
 
 require_once(WEBFOTO_DIR . 'src/database/DatabaseService.php');
 require_once(WEBFOTO_DIR . 'src/cronjob/Cronjob.php');
+require_once(WEBFOTO_DIR . 'src/api/Api.php');
