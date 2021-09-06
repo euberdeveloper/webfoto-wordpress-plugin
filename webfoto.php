@@ -65,10 +65,17 @@ function webfoto_api_get_images(WP_REST_Request $req): array
 {
     return Api::getImages($req->get_param('name'));
 }
-
+function webfoto_api_get_last_image_url(WP_REST_Request $req): string
+{
+    return Api::getLastImageUrl($req->get_param('name'));
+}
 add_action('rest_api_init', function () {
     register_rest_route('webfoto/v1', '/api/albums/(?P<name>\w+)/images', array(
         'methods' => 'GET',
         'callback' => 'webfoto_api_get_images',
+    ));
+    register_rest_route('webfoto/v1', '/api/albums/(?P<name>\w+)/images/latest', array(
+        'methods' => 'GET',
+        'callback' => 'webfoto_api_get_last_image_url',
     ));
 });
