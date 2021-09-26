@@ -1,0 +1,54 @@
+name: release
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Pull core submodule
+        run: git submodule update --init --recursive
+      
+      - name: Use php composer
+        uses: php-actions/composer@v6
+
+      - name: Downgrade code
+        run: composer run rector
+
+      - name: Uninstall dev deps
+        run: sudo composer update --no-dev
+
+      - name: Compress source
+        uses: master-atul/tar-action@v1.0.2
+        id: compress
+        with:
+          command: c
+          files: |
+            ./src
+            ./vendor
+            ./webfoto.php
+            ./composer.json
+            ./composer.lock
+            ./README.md
+          outPath: webfoto-wordpress-plugin.tar.gz
+
+      - name: Get version of the project
+        id: project-version
+        uses: 'euberdeveloper/ga-project-version@main'
+        with:
+          package-manager: 'composer'
+
+      - name: Add release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "${{ steps.project-version.outputs.version }}"
+          prerelease: false
+          title: "Deploy webfoto wordpress plugin"
+          files: |
+            webfoto-wordpress-plugin.tar.gz

@@ -21,7 +21,15 @@ class Cronjob
 
         foreach ($settings->albums as $album) {
             Logger::$logger->info("Handling {$album['name']}");
-            $handler = new ImagesHandler($album, $settings->outputPhotosPath, $db, get_theme_root());
+            $handler = new ImagesHandler(
+                $album,
+                $settings->outputPhotosPath,
+                $settings->keepLastDays,
+                $settings->alertThresholdHours,
+                $settings->emailOptions,
+                $db,
+                get_theme_root()
+            );
             $handler->handle();
         }
 

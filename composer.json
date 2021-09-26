@@ -1,5 +1,5 @@
 {
-    "version": "0.1.0",
+    "version": "1.1.0",
     "name": "euber/webfoto",
     "autoload": {
         "psr-4": {
@@ -21,6 +21,10 @@
     },
     "scripts": {
         "pull-core": "git submodule update --init --recursive",
-        "post-install-cmd": "cd src/core && composer install"
+        "post-install-cmd": "cd src/core && composer install",
+        "rector": "vendor/bin/rector process"
+    },
+    "require-dev": {
+        "rector/rector": "^0.11.53"
     }
 }

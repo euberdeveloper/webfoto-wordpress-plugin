@@ -4,19 +4,18 @@
  * Plugin Name: Webfoto
  * Plugin URI: https://api.fotowebcam.it
  * Description: Webfoto is a plugin that allows you to integrate periodically photos into your Wordpress site
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Eugenio Berretta
  * Author URI: https://github.com/euberdeveloper
  * License: GPLv2 or later
  * Text Domain: webfoto
  */
 
-
 // Define the plugin directory
 define('WEBFOTO_DIR', plugin_dir_path(__FILE__));
 
 // Add autoloader
-require_once WEBFOTO_DIR . 'src/autoload.php';
+require_once WEBFOTO_DIR . 'autoload.php';
 
 // Import the modules
 
