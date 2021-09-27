@@ -31,6 +31,11 @@ class Shortcode
             'required' => false
         ],
         [
+            'name' => 'show-spinner',
+            'type' => 'boolean',
+            'required' => false
+        ],
+        [
             'name' => 'spinner-color',
             'type' => 'string',
             'required' => false
@@ -59,6 +64,21 @@ class Shortcode
             'name' => 'min-zindex',
             'type' => 'string',
             'required' => false
+        ],
+        [
+            'name' => 'legacy-time-lapse',
+            'type' => 'boolean',
+            'required' => false
+        ],
+        [
+            'name' => 'time-lapse-max-items',
+            'type' => 'number',
+            'required' => false
+        ],
+        [
+            'name' => 'youtube-id',
+            'type' => 'string',
+            'required' => false
         ]
     ];
 
@@ -68,14 +88,11 @@ class Shortcode
             return null;
         }
 
-        switch ($type) {
-            case 'string':
-                return "{$name}=\"{$value}\"";
-            case 'boolean':
-                return $value ? "{$name}=\"{$name}\"" : null;
-        }
-
-        return null;
+        return match ($type) {
+            'string', 'number' => "{$name}=\"{$value}\"",
+            'boolean' => $value ? "{$name}" : null,
+            default => null
+        };
     }
 
     private static function getAttributesDefaults(): array
