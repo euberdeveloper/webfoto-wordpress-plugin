@@ -1,3 +1,4 @@
-[submodule "src/core"]
+[submodule "core"]
 	path = src/core
 	url = https://github.com/Dev-digitalgarda/webfoto-php-core
+	branch = main
