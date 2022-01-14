@@ -76,6 +76,11 @@ class Shortcode
             'required' => false
         ],
         [
+            'name' => 'time-lapse-interval',
+            'type' => 'number',
+            'required' => false
+        ],
+        [
             'name' => 'youtube-id',
             'type' => 'string',
             'required' => false
@@ -112,7 +117,7 @@ class Shortcode
             $name = $el['name'];
             $value = $parsedAttrs[$name];
             $type = $el['type'];
-            
+
             return self::attributeToString($name, $value, $type);
         }, self::$attributes));
     }
