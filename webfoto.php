@@ -4,7 +4,7 @@
  * Plugin Name: Webfoto
  * Plugin URI: https://api.fotowebcam.it
  * Description: Webfoto is a plugin that allows you to integrate periodically photos into your Wordpress site
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author: Eugenio Berretta
  * Author URI: https://github.com/euberdeveloper
  * License: GPLv2 or later
