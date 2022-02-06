@@ -1,4 +1,4 @@
-# webfoto-php-backend
+# webfoto-wordpress-plugin
 
 This is the wordpress plugin of the project "Webfoto".
 
